@@ -7,7 +7,7 @@ It checks the journal and extracts the information relative to each chain proces
 
 - ReStake must run as a service, so that it logs its activity in the journal.
 - Python package `discord-webhook` must be installed. `python3 -m pip install discord-webhook` 
-- A [Discord webhook](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) must be provided: define the variable `webhook` at the top of the script.
+- A [Discord webhook](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) must be provided: define the variable `webhook_url` at the top of the script.
 - Discord user IDs can be provided for alerts to tag specific people, by defining the variable `recipients` at the top of the script.
   - Right-click on a user and click on Copy User ID, or click on a user and right-click on one of its roles then on Copy Role ID.
     - An ID looks like 972778865355272194
