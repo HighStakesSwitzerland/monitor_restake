@@ -23,6 +23,8 @@ class MonitorRestake:
             networks = {}
             network = "Cosmos" #a placeholder for now
             for i in data:
+                if isinstance(i, list):
+                    i = ''.join(chr(c) for c in i)
                 if "Loaded" in i:
                     network = i.split('Loaded ')[1].replace(" ", "_")
                 if network in networks:
