@@ -21,19 +21,22 @@ class MonitorRestake:
             data = [loads(i)['MESSAGE'] for i in (data[:-1].split('\n'))]
 
             networks = {}
-            network = "Cosmos" #a placeholder for now
+            network = "" 
             for i in data:
                 if isinstance(i, list):
                     i = ''.join(chr(c) for c in i)
-                if "Loaded" in i:
-                    network = i.split('Loaded ')[1].replace(" ", "_")
-                if network in networks:
-                    networks[network] += i + ' '
-                else:
-                    networks[network] = i + ' '
+                if not "address" in str(i): #don't need the full logs
+                    if "Loaded" in i:
+                        network = i.split('=')[-1].replace(" ", "_")
+
+                    if network:
+                        if network in networks:
+                            networks[network] += i + ' '
+                        else:
+                            networks[network] = i + ' '
 
             for i in networks:
-                if not 'Autostake finished' in networks[i]:
+                if 'Autostake finished' not in networks[i]:
                     if "Could not connect" in networks[i]:
                         error = "Check server configuration"
                         color = 16711935
